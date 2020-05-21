@@ -43,7 +43,12 @@
 
             <ng-container matColumnDef="Difficulty">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Difficulty</th>
-              <td mat-cell *matCellDef="let arr"> {{arr.Difficulty}} </td>
+              <td mat-cell *matCellDef="let arr">
+
+                <p *ngIf="arr.Difficulty==3" style="display: inline;"> Hard </p>
+              <p *ngIf="arr.Difficulty==2" style="display: inline;"> Medium</p>
+              <p *ngIf="arr.Difficulty==1" style="display: inline;"> Easy </p>
+                </td>
             </ng-container>
 
 

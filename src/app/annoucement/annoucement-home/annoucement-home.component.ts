@@ -40,8 +40,10 @@ export class AnnoucementHomeComponent implements OnInit {
     "Announcement",
     "Date",
     "Batch_id",
+    "Faculty_name",
     "Action"
   ];
+
 
 
   constructor(private _ser:AnnouncementService,private _router:Router) { }

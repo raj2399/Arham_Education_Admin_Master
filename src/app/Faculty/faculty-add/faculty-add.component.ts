@@ -15,11 +15,12 @@ export class FacultyAddComponent implements OnInit {
   Mobile_no: string="";
   Date_of_birth: Date;
   Salary: number;
-  Role: number;
+  Role1:String="";
+  Role:number=1;
   arr_faculty: faculty_class[];
   arr: faculty_class[];
-  type: number[] = [
-    1, 2, 3
+  type:string[] = [
+    "Faculty","TA"
   ];
 
 Qualification:string;
@@ -67,6 +68,14 @@ Qualification:string;
     console.log(this.Email_id);
     console.log(this.arr_faculty);
 
+    if(this.Role1=="Faculty")
+    {
+        this.Role=2;
+    }
+    else
+    {
+      this.Role=3;
+    }
     this._emp.addFaculty(new faculty_class(this.Name,this.Mobile_no,this.Email_id,this.Password, this.Date_of_birth, this.Salary, this.Qualification,this.Role)).subscribe(
       (data: any) => {
         if (data.errno == 1062) {

@@ -14,7 +14,7 @@
 
 
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Title" (keypress)="keyPressText($event)" ngModel #title="ngModel" required
+                    <input matInput placeholder="Title"  ngModel #title="ngModel" required
                       [(ngModel)]="Title" name="title">
                     <mat-error *ngIf="title?.hasError('required')">
                       Title is Required

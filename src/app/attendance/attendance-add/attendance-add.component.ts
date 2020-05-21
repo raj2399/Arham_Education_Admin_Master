@@ -5,6 +5,7 @@ import { StudentService } from 'src/app/services/student.service';
 import { student_class } from 'src/app/classes/student_class';
 import { AttendanceService } from 'src/app/services/attendance.service';
 import { attendance_class } from 'src/app/classes/attendance_class';
+import { Router } from '@angular/router';
 
 
 class stu_abs
@@ -21,12 +22,13 @@ class stu_abs
 })
 export class AttendanceAddComponent implements OnInit {
 
+  flag:number=0;
   batches:batch_class[];
   students:student_class[];
   Batch_no:number;
   student_abs:stu_abs[]=[];
 
-  constructor(private batch_ser:BatchService,private student_ser:StudentService,private att_ser:AttendanceService) { }
+  constructor(private _router:Router,private batch_ser:BatchService,private student_ser:StudentService,private att_ser:AttendanceService) { }
 
 
   onbatchSelect()
@@ -57,7 +59,7 @@ export class AttendanceAddComponent implements OnInit {
 
   onclickCancle()
   {
-
+    this._router.navigate(['menu/attedance_home']);
   }
 
   onclickAdd()
@@ -75,14 +77,30 @@ export class AttendanceAddComponent implements OnInit {
             {
 
               x=this.student_abs.length;
-              alert("Attendance already taken");
+              this.flag=1;
+
+
 
             }
           }
+
         );
+        setTimeout(() => {
+          if(this.flag==1)
+        {
+          alert("Attendance already taken");
+
+        }
+
+        }, 1000);
+        if(this.flag==1)
+        {
+          break;
+        }
+
 
     }
-
+    this._router.navigate(['menu/attedance_home']);
     // if((x==this.student_abs.length) )
     //   {
 

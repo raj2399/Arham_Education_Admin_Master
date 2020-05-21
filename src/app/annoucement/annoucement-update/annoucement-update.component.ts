@@ -10,6 +10,7 @@ import { batch_class } from "../../classes/batch_class";
   styleUrls: ['./annoucement-update.component.css']
 })
 export class AnnoucementUpdateComponent implements OnInit {
+  Faculty_id:number;
   Title:string;
   Announcemnet:string;
   Date:Date;
@@ -51,8 +52,8 @@ onclickCancle(){
 
 }
 onclickupdate(){
-
-  this._ser.updateAnnoucement(new announcement_class(this.Title,this.Announcemnet,this.Date,this.Batch_id),this.Announcemnet_id).subscribe(
+  this.Faculty_id=Number(localStorage.getItem('faculty_id'));
+  this._ser.updateAnnoucement(new announcement_class(this.Title,this.Announcemnet,this.Date,this.Batch_id,this.Faculty_id),this.Announcemnet_id).subscribe(
     (data:any)=>{
         console.log(data);
         this._router.navigate(['menu/announcement_home']);

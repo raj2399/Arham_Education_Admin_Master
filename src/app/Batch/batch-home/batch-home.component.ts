@@ -11,6 +11,7 @@ import { SelectionModel } from "@angular/cdk/collections";
 import { Subject } from "rxjs";
 import { BatchAddComponent } from '../batch-add/batch-add.component';
 import { BatchUpdateComponent } from '../batch-update/batch-update.component';
+import { StudentService } from 'src/app/services/student.service';
 
 @Component({
   selector: 'app-batch-home',
@@ -34,7 +35,7 @@ export class BatchHomeComponent implements OnInit {
   sort: MatSort;
   pageEvent: PageEvent;
 flag:boolean=true;
-  constructor(private matDialog:MatDialog,private _ac:ActivatedRoute,private _ser:BatchService,private route:Router) { }
+  constructor(private student_ser:StudentService,private matDialog:MatDialog,private _ac:ActivatedRoute,private _ser:BatchService,private route:Router) { }
   displayedColumns: string[] = ['Action1','Batch_name','Action'];
   ngOnInit() {
     this.flag=true;
@@ -71,12 +72,27 @@ flag:boolean=true;
         })
       });
   }
-  Delete_Batch(item) {
-    this._ser.deleteBatch(item.Batch_id).subscribe((data: any) => {
-      console.log(data);
-      this.ngOnInit();
-    });
+  Delete_Batch(item:batch_class) {
+
+    if(confirm("Are You sure you want to Complete course for this Batch : "+item.Batch_name))
+    {
+      this.student_ser.updateStudentStatus(item).subscribe(
+        (data:any)=>
+        {
+          console.log(data);
+
+          this._ser.deleteBatch(item.Batch_id).subscribe((data: any) => {
+            console.log(data);
+            this.ngOnInit();
+          });
+
+        }
+      );
+    }
+
+
   }
+
   Batch_name_Update(item:batch_class)
   {
    // this._router.navigate(['menu/update_category',item.Category_id]);

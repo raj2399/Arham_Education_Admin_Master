@@ -47,7 +47,7 @@
                 </button>
                 &nbsp;&nbsp;&nbsp;
                 <button mat-mini-fab (click)="Delete_Batch(arr)">
-                  <mat-icon>delete</mat-icon>
+                  <mat-icon>done_outline</mat-icon>
                 </button>
               </td>
             </ng-container>
@@ -59,7 +59,7 @@
     </div>
     <div class="row">
       <div class="col-md-4">
-        <button mat-raised-button color="warn" (click)="selectedDelete()">
+        <button mat-raised-button color="warn" [disabled]='true' (click)="selectedDelete()">
           <mat-icon>delete</mat-icon> Delete All
         </button> </div>
       <div class="col-md-8">

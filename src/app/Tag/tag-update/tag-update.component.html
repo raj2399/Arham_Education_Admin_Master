@@ -5,7 +5,7 @@
   <form class="example-form" (ngSubmit)="onclickUpdate()" #f="ngForm" name="Update_Subject_form">
     <mat-form-field class="example-full-width">
       <mat-select placeholder="Select Subject" required #Select_subject="ngModel" name="Select_subject"
-        [(ngModel)]="Subject_id" class="example-full-width">
+        [(ngModel)]="Subject_id" class="example-full-width"  placeholder="Name">
         <mat-option *ngFor="let item of subject_list" [value]="item.Subject_id">
           {{item.Name}}
         </mat-option>

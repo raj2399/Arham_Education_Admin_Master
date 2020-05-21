@@ -38,7 +38,7 @@ id:number=0;
     this.role=parseInt(localStorage.getItem('faculty_type'));
     this.id=parseInt(localStorage.getItem('faculty_id'));
   }
-  displayedColumns: string[] = ['Action1','Topic','Action'];
+  displayedColumns: string[] = ['Action1','Topic','Subject_name','Action'];
 
   ngOnInit() {
 

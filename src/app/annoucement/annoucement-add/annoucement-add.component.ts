@@ -9,7 +9,7 @@ import { batch_class } from "../../classes/batch_class";
   styleUrls: ['./annoucement-add.component.css']
 })
 export class AnnoucementAddComponent implements OnInit {
-
+  Faculty_id:number;
  Title:string;
    Announcemnet:string;
    Date:Date;
@@ -44,18 +44,14 @@ export class AnnoucementAddComponent implements OnInit {
   }
 
   onclickAdd() {
-    console.log(this.Announcemnet);
-    console.log(this.Batch_id);
-    console.log(this.Title);
-    console.log(this.Date);
 
+    this.Faculty_id=Number(localStorage.getItem('faculty_id'));
 
-    this._ser.addAnnouncement(new announcement_class(this.Title,this.Announcemnet,this.Date,this.Batch_id)).subscribe((data:any)=>{
-      console.log(data);
+    this._ser.addAnnouncement(new announcement_class(this.Title,this.Announcemnet,this.Date,this.Batch_id,this.Faculty_id)).subscribe((data:any)=>{
+    console.log(data);
       this._router.navigate(['menu/announcement_home']);
 
     })
   }
-
 
 }

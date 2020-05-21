@@ -6,6 +6,7 @@ export class announcement_class
      public Announcemnet:string,
      public Date:Date,
      public Batch_id:number,
+     public Faculty_id:number
 
      )
     {}

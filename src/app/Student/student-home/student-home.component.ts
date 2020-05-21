@@ -39,6 +39,7 @@ export class StudentHomeComponent implements OnInit {
     "Date_of_birth",
     "Fees",
     "Joining_date",
+    "Status",
     "Action"
   ];
 

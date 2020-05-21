@@ -12,17 +12,6 @@
               <form class="example-form" (ngSubmit)="onclickUpdate()" #f="ngForm">
                 <div class="rows">
 
-                  <mat-form-field class="example-full-width">
-                    <mat-select placeholder="Types of Faculty" required #faculty_type="ngModel" name="Faculty_type"
-                      [(ngModel)]="Role" class="example-full-width">
-                      <mat-option *ngFor="let item of type" [value]="item">
-                        {{item}}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="faculty_type.hasError('required')">
-                      Faculty Type Must be selected
-                    </mat-error>
-                  </mat-form-field>
 
 
                   <mat-form-field class="example-full-width">

@@ -16,6 +16,7 @@ import {subject_class} from '../../classes/subject_class';
 export class TagUpdateComponent implements OnInit {
   Tag_id:number;
   tmp_subject_data:tag_class;
+  subject_name:string;
   Tag_arr:tag_class[];
   Name:string;
   Subject_id:number=0;
@@ -41,7 +42,14 @@ export class TagUpdateComponent implements OnInit {
       {
         this.tmp_subject_data=data[0];
         this.Name=this.tmp_subject_data.Name;
-        //console.log(this.Size_name);
+        this.Subject_id=this.tmp_subject_data.Subject_id;
+        console.log(data);
+
+        this._sub.getSubjectById(this.Subject_id).subscribe((data:any)=>{
+          console.log(data);
+          this.subject_name=data[0].Name;
+          console.log(this.subject_name);
+        })
       }
     );
   }
