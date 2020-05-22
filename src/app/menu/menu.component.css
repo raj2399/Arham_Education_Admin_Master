@@ -91,7 +91,14 @@ ul li
   text-align: left;
 }
 
+.person{
+  margin-left:50em;
+}
 
-
+@media only screen and (max-width: 600px) {
+  .person {
+  margin-left: 12em;
+  }
+}
 
 

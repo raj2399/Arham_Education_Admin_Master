@@ -57,17 +57,18 @@ salary_date:Date;
 
     this.flag=true;
 
-    this.faculty_dataSource.paginator = this.paginator;
-    this.faculty_dataSource.sort = this.sort;
 
     this._ser.getAllFaculty().subscribe((data:faculty_class[])=>{
       console.log(data);
       this.faculty_tbl_arr=data;
       this.faculty_dataSource.data=this.faculty_tbl_arr;
       this.faculty_dataSource.sort = this.sort;
+      this.faculty_dataSource.paginator = this.paginator;
+      this.faculty_dataSource.sort = this.sort;
+
       for(this.i=0;this.i<data.length;this.i++)
       {
-        console.log("hello");
+//        console.log("hello");
         this._ser.getfacultySalaryLastDate(data[this.i].Faculty_id).subscribe((data:any)=>{
           console.log(data);
 
