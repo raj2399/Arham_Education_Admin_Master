@@ -16,16 +16,16 @@ export class StudentAddComponent implements OnInit {
 
   Batch_id:number;
   Batch_list:batch_class[]=[];
-  Password:string;
-  Name:string;
+  Password:string="";
+  Name:string="";
   Batch_no:number;
-  Email_id:string;
-  Phone_no:string;
-  Last_name:string;
-  Middle_name:string;
-  Parent_name:string;
-  Parent_mobile_no:string;
-  Address:string;
+  Email_id:string="";
+  Phone_no:string="";
+  Last_name:string="";
+  Middle_name:string="";
+  Parent_name:string="";
+  Parent_mobile_no:string="";
+  Address:string="";
   Date_of_birth:Date;
   Status:number=1;
   Fees:number;
@@ -91,6 +91,7 @@ export class StudentAddComponent implements OnInit {
         if (data.errno == 1062) {
           alert("Email id or Mobile_no is already exist");
           this.Email_id = '';
+          this.Phone_no='';
         }
         else {
           if(this.Fees<0)

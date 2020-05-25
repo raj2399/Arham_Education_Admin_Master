@@ -15,7 +15,7 @@ import {subject_class} from '../../classes/subject_class';
 })
 export class TagAddComponent implements OnInit {
   Tag_arr:tag_class[];
-  Name:string;
+  Name:string="";
   Subject_id:number=0;
   Status:number=1;
   flag:boolean=false;
@@ -31,6 +31,18 @@ export class TagAddComponent implements OnInit {
     });
     this.flag=true;
   }
+
+  keyPressText(event: any)
+  {
+  const pattern = /[A-Z\a-z\&\-\@ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar) || this.Name.length>=20) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
+  }
+
 
   onclickAdd()
   {

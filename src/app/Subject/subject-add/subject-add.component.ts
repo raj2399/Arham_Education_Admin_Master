@@ -12,7 +12,7 @@ import {SubjectHomeComponent } from '../subject-home/subject-home.component';
 })
 export class SubjectAddComponent implements OnInit {
  Subject_arr:subject_class[];
-  Name:string;
+  Name:string="";
   flag:boolean=false;
   i:number;
 
@@ -28,6 +28,18 @@ export class SubjectAddComponent implements OnInit {
     );
 
   }
+
+  keyPressText(event: any)
+  {
+  const pattern = /[A-Z\a-z\&\-\@\+\-\^ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+       if (!pattern.test(inputChar) || this.Name.length>=20) {
+       // invalid character, prevent input
+           event.preventDefault();
+      }
+  }
+
   onclickAdd()
   {
     if(this.flag==true)

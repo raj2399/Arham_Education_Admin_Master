@@ -17,10 +17,10 @@ import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 export class QuestionUpdateComponent implements OnInit {
 
   subject_list:subject_class[];
-  subject_id:number=0;
+  Subject_id:number=0;
   question:questions_class[];
   tag_list:tag_class[];
-  tag_id:number=0;
+  Tag_id:number=0;
   diff_id:number=0;
 
 
@@ -50,7 +50,7 @@ export class QuestionUpdateComponent implements OnInit {
     this.AddquestionService.getQuestionById(this.Question_id).subscribe(
       (data:questions_class[])=>{
         console.log(data);
-        this.tag_id=data[0].Tag_id;
+        this.Tag_id=data[0].Tag_id;
         this.diff_id=data[0].Difficulty;
         this.Question=data[0].Question;
         this.Option1=data[0].Option1;
@@ -75,8 +75,8 @@ export class QuestionUpdateComponent implements OnInit {
   }
   subject_select()
   {
-    console.log(this.subject_id);
-    this.tag_ser.getTagbySubjectId(this.subject_id).subscribe(
+    console.log(this.Subject_id);
+    this.tag_ser.getTagbySubjectId(this.Subject_id).subscribe(
       (data:tag_class[])=>
       {
         console.log(data);
@@ -87,11 +87,11 @@ export class QuestionUpdateComponent implements OnInit {
 
   tag_select()
   {
-    console.log(this.tag_id);
+    console.log(this.Tag_id);
   }
 
   onclickUpdate(){
-    this.AddquestionService.updateQuestion(new questions_class(this.tag_id,this.diff_id,this.Question,this.Option1,this.Option2,this.Option3,this.Option4,this.Answer,this.count,this.id),this.Question_id) .subscribe((data:any)=>{
+    this.AddquestionService.updateQuestion(new questions_class(this.Tag_id,this.diff_id,this.Question,this.Option1,this.Option2,this.Option3,this.Option4,this.Answer,this.count,this.id),this.Question_id) .subscribe((data:any)=>{
       console.log(data);
       this._route.navigate(['menu/question_home']);
     });

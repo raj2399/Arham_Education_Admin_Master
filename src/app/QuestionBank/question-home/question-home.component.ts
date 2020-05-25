@@ -40,7 +40,7 @@ id:number;
     this.id=parseInt(localStorage.getItem('faculty_id'));
 
   }
-  displayedColumns: string[] = ['Action1','Question_id','Difficulty','View_Question','Action'];
+  displayedColumns: string[] = ['Action1','Question_id','Difficulty','Topic_Name','View_Question','Action'];
   ngOnInit() {
     this.flag=true;
 
