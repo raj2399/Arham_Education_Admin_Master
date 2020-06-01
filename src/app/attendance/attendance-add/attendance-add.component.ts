@@ -22,7 +22,9 @@ class stu_abs
 })
 export class AttendanceAddComponent implements OnInit {
 
+  i:number=0;
   flag:number=0;
+  flag1:boolean=true;
   batches:batch_class[];
   students:student_class[];
   Batch_no:number;
@@ -34,17 +36,57 @@ export class AttendanceAddComponent implements OnInit {
   onbatchSelect()
   {
     console.log(this.Batch_no);
-    this.student_ser.getStudentByBatchId(this.Batch_no).subscribe(
-      (data:student_class[])=>
+
+this.att_ser.attendance_status().subscribe(
+  (data:any)=>{
+    if(data.length==0)
+    {
+      this.flag=0;
+      this.flag1=true;
+      console.log('no');
+    }
+    else
+    {
+      for(this.i=0;this.i<data.length;this.i++)
       {
-        console.log(data);
-        this.students=data;
-        for(let i=0;i<data.length;i++)
+        if(this.Batch_no==data[this.i].Batch_no)
         {
-          this.student_abs.push(new stu_abs(data[i].Student_id,true));
+          this.flag=1;
+          this.flag1=false;
+          console.log('yes');
+          alert('Attendance is already taken for this batch');
+          this._router.navigate['menu/attedance_home'];
+          break;
+        }
+
+        else
+        {
+          this.flag=0;
+          this.flag1=true;
+
         }
       }
-    );
+    }
+      console.log(this.flag);
+      if(this.flag==0)
+      {
+        this.student_ser.getStudentByBatchId(this.Batch_no).subscribe(
+          (data:student_class[])=>
+          {
+            console.log(data);
+            this.students=data;
+            for(let i=0;i<data.length;i++)
+            {
+              this.student_abs.push(new stu_abs(data[i].Student_id,true));
+            }
+          }
+        );
+
+      }
+  }
+);
+
+
   }
 
   onChange(index)
@@ -77,7 +119,7 @@ export class AttendanceAddComponent implements OnInit {
             {
 
               x=this.student_abs.length;
-              this.flag=1;
+
 
 
 
@@ -85,18 +127,6 @@ export class AttendanceAddComponent implements OnInit {
           }
 
         );
-        setTimeout(() => {
-          if(this.flag==1)
-        {
-          alert("Attendance already taken");
-
-        }
-
-        }, 1000);
-        if(this.flag==1)
-        {
-          break;
-        }
 
 
     }

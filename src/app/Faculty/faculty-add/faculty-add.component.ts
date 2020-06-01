@@ -10,6 +10,8 @@ import { Router } from "@angular/router";
 })
 export class FacultyAddComponent implements OnInit {
   Email_id: string;
+  minDate = new Date(1960, 0, 1);
+  maxDate = new Date(2000, 11, 31);
   Password: string;
   Name: string="";
   Mobile_no: string="";
@@ -17,6 +19,7 @@ export class FacultyAddComponent implements OnInit {
   Salary: number;
   Role1:String="";
   Role:number=1;
+
   arr_faculty: faculty_class[];
   arr: faculty_class[];
   type:string[] = [
@@ -28,9 +31,19 @@ Qualification:string;
     "MA","BA","MSC","BSC","MCA","BCA"
   ];
   i: number;
+  Faculty_type:number;
 
   constructor(private _router: Router, private _emp:FacultyService) { }
   ngOnInit() {
+
+    this.Faculty_type=Number(localStorage.getItem('faculty_type'));
+    if(this.Faculty_type!=1)
+    {
+      console.log(true);
+     this._router.navigate(['menu']);
+    }
+
+
     this._emp.getAllFaculty().subscribe(
       (data: any) => {
         console.log(data);
@@ -38,6 +51,22 @@ Qualification:string;
       }
     );
   }
+
+  onClickChange()
+  {
+    if (this.Salary< 0 || this.Salary <6000) {
+      alert("Salary can not less than 6k");
+      this.Salary =6000;
+    }
+    if(this.Salary>30000)
+    {
+      alert("Salary can not more than 30k");
+      this.Salary=18000;
+    }
+
+
+  }
+
 
   keyPressText(event: any)
   {

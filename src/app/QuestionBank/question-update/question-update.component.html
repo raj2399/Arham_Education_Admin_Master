@@ -71,34 +71,6 @@
 
 
 
-
-
-                  <mat-form-field class="example-full-width">
-                    <mat-select placeholder="Select Subject" (selectionChange)="subject_select()" required #subject="ngModel" name="subject"
-                      [(ngModel)]="Subject_id" class="example-full-width">
-                      <mat-option *ngFor="let item of subject_list" [value]="item.Subject_id">
-                        {{item.Name}}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="subject.hasError('required')">
-                      Subject Must be selected
-                    </mat-error>
-                  </mat-form-field>
-
-                  <mat-form-field class="example-full-width">
-                    <mat-select placeholder="Select Topic"   required #topic="ngModel" name="topic"
-                      [(ngModel)]="Tag_id" class="example-full-width">
-                      <mat-option *ngFor="let item of tag_list" [value]="item.Tag_id">
-                        {{item.Name}}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="topic.hasError('required')">
-                      Topic Must be selected
-                    </mat-error>
-                  </mat-form-field>
-
-
-
                 </div>
                 <div class="rows">
                   <button mat-raised-button type="submit" [disabled]="!f.valid" class="btn">Update Question</button>

@@ -80,7 +80,7 @@
                   <mat-form-field class="example-full-width">
                     <input matInput placeholder="Mobile_no:" (keypress)="keyPressNumber($event)" type="text" name="Mobile_no" [(ngModel)]="Phone_no"
                       #mob1="ngModel" required required minlength="10">
-                    <mat-error *ngIf="mob1.hasError('min')">
+                    <mat-error *ngIf="mob1.hasError('minlength')">
                       Required 10 Digit
                     </mat-error>
                     <mat-error *ngIf="mob1.hasError('required')">
@@ -89,24 +89,26 @@
                   </mat-form-field>
 
 
+
+
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Parent_Mobile_no:" (keypress)="keyPressNumber($event)" type="text" name="Mobile_no" [(ngModel)]="Parent_mobile_no"
-                      #mob2="ngModel" required required minlength="10">
-                    <mat-error *ngIf="mob2.hasError('min')">
+                    <input matInput #input="ngModel"  [min]="minDate" [max]="maxDate" [matDatepicker]="picker" name="DOB" [(ngModel)]="Date_of_birth" placeholder="Date of birth">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+
+
+
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Parent_Mobile_no:" (keypress)="keyPressNumber1($event)" type="text" name="Mobile_no1" [(ngModel)]="Parent_mobile_no"
+                      #mob2="ngModel" required required  minlength="10">
+                    <mat-error *ngIf="mob2.hasError('minlength')">
                       Required 10 Digit
                     </mat-error>
                     <mat-error *ngIf="mob2.hasError('required')">
                       Parent Mobile Number is Required
                     </mat-error>
                   </mat-form-field>
-
-
-                  <mat-form-field class="example-full-width">
-                    <input matInput [matDatepicker]="picker" name="DOB" [(ngModel)]="Date_of_birth" placeholder="Date of birth">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-
 
 
 
@@ -137,13 +139,13 @@
 
 
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Fees" required #salary="ngModel" type="number" [(ngModel)]="Fees"
-                      name="Salary" required min="10000">
+                    <input matInput placeholder="Fees" required #salary="ngModel" type="number"  [(ngModel)]="Fees"
+                      name="Salary" (change)="onClickChange()" required min="10000" max="30000">
                     <mat-error *ngIf="salary?.hasError('required')">
                       Fees is Must Required
                     </mat-error>
                     <mat-error *ngIf="salary?.hasError('min')">
-                      Fees too low
+                      Fees is more then 10k
                     </mat-error>
                   </mat-form-field>
                 </div>

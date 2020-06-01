@@ -9,7 +9,7 @@ import { attendance_class } from '../classes/attendance_class';
 export class AttendanceService {
 
   private attendance='http://localhost:3000/attendance_admin/';
-
+  private status='http://localhost:3000/status/';
   constructor(private _http:HttpClient) { }
 
   addAttendance(item:attendance_class){
@@ -18,6 +18,11 @@ export class AttendanceService {
     let body=JSON.stringify(item);
     console.log(body);
     return this._http.post(this.attendance,body,{headers:_header});
+  }
+
+  attendance_status()
+  {
+    return this._http.get(this.status);
   }
 
   getStudentAttendanceByStudentId(student_id:number)

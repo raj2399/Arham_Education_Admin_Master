@@ -10,12 +10,17 @@ export class BatchService {
 
    private batch='http://localhost:3000/batch_admin/';
   private batch_del='http://localhost:3000/batch_del_admin/';
-
+  private batch_result='http://localhost:3000/batch_result/';
   constructor(private _http:HttpClient) { }
   getAllBatch()
   {
 
     return this._http.get(this.batch);
+  }
+
+  getBatchResult(id)
+  {
+    return this._http.get(this.batch_result+id);
   }
 
   getBatchById(id)

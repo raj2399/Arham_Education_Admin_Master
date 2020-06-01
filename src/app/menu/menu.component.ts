@@ -18,18 +18,21 @@ export class MenuComponent {
     );
 
     role:number=0;
+    email:string="";
   constructor(private breakpointObserver: BreakpointObserver,private _route:Router) {
     this.role=parseInt(localStorage.getItem('faculty_type'));
+    this.email=localStorage.getItem('email_id');
   }
 
   logout()
   {
 
-    localStorage.setItem('email_id',"");
 
     localStorage.setItem('faculty_type',"0");
-    localStorage.setItem('faculty_id',"0");
-    this._route.navigate(['']);
+    this.role=parseInt(localStorage.getItem('faculty_type'));
+    console.log(this.role);
+
+     this._route.navigate(['']);
 
   }
 }

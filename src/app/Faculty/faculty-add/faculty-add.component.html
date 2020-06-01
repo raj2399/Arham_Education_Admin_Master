@@ -59,7 +59,7 @@
                   <mat-form-field class="example-full-width">
                     <input matInput placeholder="Mobile_no:" (keypress)="keyPressNumber($event)" type="text" name="Mobile_no" [(ngModel)]="Mobile_no"
                       #mob1="ngModel" required required minlength="10">
-                    <mat-error *ngIf="mob1.hasError('min')">
+                    <mat-error *ngIf="mob1.hasError('minlength')">
                       Required 10 Digit
                     </mat-error>
                     <mat-error *ngIf="mob1.hasError('required')">
@@ -81,14 +81,14 @@
                   </mat-form-field>
 
                   <mat-form-field class="example-full-width">
-                    <input matInput [matDatepicker]="picker" name="DOB" [(ngModel)]="Date_of_birth" placeholder="Date of birth">
+                    <input #input="ngModel" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" name="DOB" [(ngModel)]="Date_of_birth" placeholder="Date of birth">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
 
-                  <mat-form-field class="example-full-width">
+                  <mat-form-field class="example-full-width" >
                     <input matInput placeholder="Salary" required #salary="ngModel" type="number" [(ngModel)]="Salary"
-                      name="Salary" required min="1000">
+                      name="Salary" (change)="onClickChange()" required min="6000" max="30000" >
                     <mat-error *ngIf="salary?.hasError('required')">
                       Salary is Must Required
                     </mat-error>

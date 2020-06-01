@@ -42,13 +42,20 @@ export class FacultyHomeComponent implements OnInit {
     "Action"
   ];
 
-
+  Faculty_type:number;
   constructor(private _ser:FacultyService,private _router:Router) { }
 
   ngOnInit() {
 
     this.flag=true;
 
+
+    this.Faculty_type=Number(localStorage.getItem('faculty_type'));
+    if(this.Faculty_type!=1)
+    {
+      console.log(true);
+     this._router.navigate(['menu']);
+    }
 
     this._ser.getAllFaculty().subscribe((data:any)=>{
       console.log(data);

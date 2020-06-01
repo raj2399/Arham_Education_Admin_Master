@@ -35,9 +35,26 @@ export class BatchHomeComponent implements OnInit {
   sort: MatSort;
   pageEvent: PageEvent;
 flag:boolean=true;
+Faculty_type:number;
   constructor(private student_ser:StudentService,private matDialog:MatDialog,private _ac:ActivatedRoute,private _ser:BatchService,private route:Router) { }
   displayedColumns: string[] = ['Action1','Batch_name','Action'];
   ngOnInit() {
+    this.flag=true;
+    this.Faculty_type=Number(localStorage.getItem('faculty_type'));
+    if(this.Faculty_type!=1)
+    {
+      console.log(true);
+
+
+//    localStorage.setItem('faculty_type',"0");
+
+
+     this.route.navigate(['menu']);
+
+
+    }
+
+
     this.flag=true;
 
     this._ser.getAllBatch().subscribe(

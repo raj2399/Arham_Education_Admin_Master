@@ -15,11 +15,22 @@ export class SubjectAddComponent implements OnInit {
   Name:string="";
   flag:boolean=false;
   i:number;
-
+  Faculty_type:number;
   constructor(private _ser:SubjectService,private _router:Router,private matDialog:MatDialogRef<SubjectHomeComponent>,private _act:ActivatedRoute) { }
 
   ngOnInit() {
     this.flag=true;
+
+    this.Faculty_type=Number(localStorage.getItem('faculty_type'));
+    if(this.Faculty_type!=1)
+    {
+      console.log(true);
+     this._router.navigate(['menu']);
+
+
+    }
+
+
     this._ser.getAllSubject().subscribe(
       (data:subject_class[])=>
       {

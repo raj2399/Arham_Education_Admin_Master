@@ -28,6 +28,7 @@ Qualification:string;
     "MA","BA","MSC","BSC","MCA","BCA"
   ];
   i: number;
+  Salary1:number;
 role:number=0;
   constructor(private _router: Router, private _emp:FacultyService,private act_router:ActivatedRoute) {
     this.role=parseInt(localStorage.getItem('faculty_type'));
@@ -54,10 +55,28 @@ role:number=0;
         this.Role=data[0].Role;
         this.Date_of_birth=data[0].Date_of_birth;
         this.Salary=data[0].Salary;
+        this.Salary1=data[0].Salary;
         this.Qualification=data[0].Qualification;
       }
     );
   }
+
+  onClickChange()
+  {
+    if (this.Salary< 0 || this.Salary <6000) {
+      alert("Salary can not less than 6k");
+      this.Salary =this.Salary1;
+    }
+    if(this.Salary>30000)
+    {
+      alert("Salary can not more than 30k");
+      this.Salary=this.Salary1;
+    }
+
+
+  }
+
+
 
   keyPressText(event: any)
   {

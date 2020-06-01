@@ -37,18 +37,6 @@
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
 
-                  <mat-form-field class="example-full-width">
-                    <mat-select placeholder=" Select Batch For Announcement" required #batch_id="ngModel" name="batch_id"
-                      [(ngModel)]="Batch_id" class="example-full-width">
-                      <mat-option *ngFor="let item of Batch_list" [value]="item.Batch_id">
-                        {{item.Batch_name}}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="batch_id.hasError('required')">
-                      Batch Must be selected
-                    </mat-error>
-                  </mat-form-field>
-
 
                  </div>
                 <div class="rows">

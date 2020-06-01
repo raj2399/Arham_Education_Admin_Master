@@ -256,7 +256,8 @@ private refreshData(): void {
         labels: ["Salary","Fees"],
         datasets: [{
           label: "",
-          backgroundColor:["rgb(251,149,13)","rgb(252,2,128)"],
+          backgroundColor:["rgb(230,149,13)","rgb(252,2,128)"],
+
           data: this.pie_data,
           fill: true,
           lineTension: 0.2,
@@ -269,11 +270,20 @@ private refreshData(): void {
           text: "Pie Chart",
           display: true,
         },
+        legend: {
+          display: true,
+          fullWidth: true,
+          labels: {
+            fontSize: 20,
+            fontColor: 'black',
+          }
+        },
         animations:
         {
           animationScale:true
         }
-      }
+      },
+
     });
 
 
@@ -362,8 +372,8 @@ private refreshDatachart(): void {
         labels: ["Jan", "Feb", "March", "April", "May", "June","July","Aug","Sept","Oct","Nov","Dec"],
         datasets: [{
           label: "Exam Taken By Per Month",
-          // data: [this.tmpdata_line[1],this.tmpdata_line[2],this.tmpdata_line[3],this.tmpdata_line[4],this.tmpdata_line[5],this.tmpdata_line[6],this.tmpdata_line[7],this.tmpdata_line[8],this.tmpdata_line[9],this.tmpdata_line[10],this.tmpdata_line[11],this.tmpdata_line[12]],
-          data:this.tmpdata_line,
+          data: [this.tmpdata_line[1],this.tmpdata_line[2],this.tmpdata_line[3],this.tmpdata_line[4],this.tmpdata_line[5],this.tmpdata_line[6],this.tmpdata_line[7],this.tmpdata_line[8],this.tmpdata_line[9],this.tmpdata_line[10],this.tmpdata_line[11],0],
+          //data:this.tmpdata_line,
           fill: true,
           lineTension: 0.2,
           borderColor: "white",

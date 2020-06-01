@@ -39,11 +39,20 @@ id:number=0;
     this.id=parseInt(localStorage.getItem('faculty_id'));
   }
   displayedColumns: string[] = ['Action1','Topic','Subject_name','Action'];
+  Faculty_type:number;
+
 
   ngOnInit() {
 
+
     this.flag=true;
 
+    this.Faculty_type=Number(localStorage.getItem('faculty_type'));
+    if(this.Faculty_type!=1)
+    {
+      console.log(true);
+     this.route.navigate(['menu']);
+    }
 
       this._ser.getAllTopics().subscribe(
         (data:any)=>{

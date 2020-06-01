@@ -71,6 +71,8 @@ import { AttendanceHomeComponent } from './attendance/attendance-home/attendance
 import { AttendanceDetailsComponent,HighlightedDatesComponent } from './attendance/attendance-details/attendance-details.component';
 import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { ViewQuestionPaperComponent } from './view-question-paper/view-question-paper.component';
+import { BatchResultComponent } from './batch-result/batch-result.component';
 
 @NgModule({
   declarations: [
@@ -117,6 +119,8 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
     AttendanceDetailsComponent,
     ForgetpasswordComponent,
     ChangepasswordComponent,
+    ViewQuestionPaperComponent,
+    BatchResultComponent,
   ],
   imports: [
     CommonModule,

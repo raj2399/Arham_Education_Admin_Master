@@ -36,7 +36,9 @@ export class ExamHomeComponent implements OnInit {
     "Batch_name",
     "Date",
     "Marks",
-    "Time"
+    "Time",
+    "View_Question",
+    "Batch_Result"
   ];
 
 role:number=0;
@@ -45,7 +47,7 @@ role:number=0;
   constructor(private _ser:ExamService,private _router:Router) { }
 
   ngOnInit() {
-    console.log(this.role);
+    //console.log(this.role);
     this.flag=true;
 
 
@@ -60,6 +62,15 @@ role:number=0;
 
     });
 
+  }
+
+  view_question_paper(item){
+    this._router.navigate(["/menu/view_paper", item.Exam_id]);
+
+  }
+  Exam_result(item)
+  {
+    this._router.navigate(["/menu/batch_result/",item.Exam_id])
   }
 
   Add_Exams() {

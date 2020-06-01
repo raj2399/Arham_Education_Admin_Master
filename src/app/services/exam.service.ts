@@ -25,4 +25,12 @@ export class ExamService {
   {
     return this._http.get(this.url1);
   }
+  getCount(tag_id:number,diff_id:number)
+  {
+    return this._http.get(this.url+'getCount/'+tag_id+'/'+diff_id);
+  }
+  getCountbySubjectId(sub_id:number)
+  {
+    return this._http.get(this.url+'getCount/'+sub_id);
+  }
 }

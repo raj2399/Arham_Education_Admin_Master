@@ -23,6 +23,8 @@ export class StudentAddComponent implements OnInit {
   Phone_no:string="";
   Last_name:string="";
   Middle_name:string="";
+  minDate = new Date(1990, 0, 1);
+  maxDate = new Date(2000, 11, 31);
   Parent_name:string="";
   Parent_mobile_no:string="";
   Address:string="";
@@ -39,10 +41,19 @@ export class StudentAddComponent implements OnInit {
   ];
 
   Gender:string;
-
+  Faculty_type:number;
   constructor(private _ser:AnnouncementService,private _router:Router,private stu_ser:StudentService) { }
 
   ngOnInit() {
+
+    this.Faculty_type=Number(localStorage.getItem('faculty_type'));
+    if(this.Faculty_type!=1)
+    {
+      console.log(true);
+     this._router.navigate(['menu']);
+
+
+    }
 
 
     this._ser.getAllBatch().subscribe((data:batch_class[]) => {
@@ -76,11 +87,41 @@ export class StudentAddComponent implements OnInit {
     const pattern = /[0-9]/;
     let inputChar = String.fromCharCode(event.charCode);
     // console.log(inputChar, e.charCode);
-       if (!pattern.test(inputChar) || this.Parent_mobile_no.length>=10) {
+       if (!pattern.test(inputChar) ||  this.Phone_no.length>=10) {
+
+        event.preventDefault();
+
+
        // invalid character, prevent input
-           event.preventDefault();
+
       }
  }
+
+ onClickChange()
+ {
+   if (this.Fees< 0 || this.Fees <10000) {
+     alert("Fees can not less than 10k");
+     this.Fees = 10000;
+   }
+   if(this.Fees>30000)
+   {
+     alert("Item can not more than 30k");
+     this.Fees=20000;
+   }
+
+
+ }
+
+
+ keyPressNumber1(event: any) {
+  const pattern = /[0-9]/;
+  let inputChar = String.fromCharCode(event.charCode);
+  // console.log(inputChar, e.charCode);
+     if (!pattern.test(inputChar) || this.Parent_mobile_no.length>=10) {
+
+      event.preventDefault();
+    }
+}
 
   onclickAdd() {
     console.log(this.Email_id);

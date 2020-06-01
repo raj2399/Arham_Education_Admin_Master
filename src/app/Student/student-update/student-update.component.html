@@ -80,13 +80,13 @@
 
 
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Fees" required #salary="ngModel" type="number" [(ngModel)]="Fees"
-                      name="Salary" required min="10000">
+                    <input matInput placeholder="Fees" required #salary="ngModel" type="number"  [(ngModel)]="Fees"
+                      name="Salary" (change)="onClickChange()" required min="10000" max="30000">
                     <mat-error *ngIf="salary?.hasError('required')">
                       Fees is Must Required
                     </mat-error>
                     <mat-error *ngIf="salary?.hasError('min')">
-                      Fees too low
+                      Fees is more then 10k
                     </mat-error>
                   </mat-form-field>
                 </div>

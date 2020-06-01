@@ -17,14 +17,24 @@ export class TagAddComponent implements OnInit {
   Tag_arr:tag_class[];
   Name:string="";
   Subject_id:number=0;
+  sub_name:subject_class;
   Status:number=1;
   flag:boolean=false;
   i:number;
   subject_list:subject_class[]=[];
+  Faculty_type:number;
 
   constructor(private _sub:SubjectService,private _ser:TagService,private _router:Router,private matDialog:MatDialogRef<TagHomeComponent>,private _act:ActivatedRoute) {
   }
   ngOnInit() {
+
+    this.Faculty_type=Number(localStorage.getItem('faculty_type'));
+    if(this.Faculty_type!=1)
+    {
+      console.log(true);
+     this._router.navigate(['menu']);
+    }
+
 
     this._sub.getAllSubject().subscribe((data:subject_class[])=>{
       this.subject_list=data;
@@ -46,10 +56,12 @@ export class TagAddComponent implements OnInit {
 
   onclickAdd()
   {
+    console.log(this.sub_name);
+
     if(this.flag==true)
     {
 
-   this._ser.addTag(new tag_class(this.Name,this.Subject_id)).subscribe(
+   this._ser.addTag(new tag_class(this.Name,this.sub_name.Subject_id)).subscribe(
      (data:any)=>
      {
        if(data.errno==1062)

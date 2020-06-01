@@ -74,13 +74,22 @@ export class FeesPayComponent implements OnInit {
 
   trans_pageEvent: PageEvent;
   trans_displayedColumns: string[] = ['Transaction_id','Paid_amount','Date'];
-
+  Faculty_type:number;
 
 
   constructor(private batch_ser:BatchService,private stu:StudentService,private _act:ActivatedRoute,private _router:Router,private fees_ser:FeesService) { }
 
 
   ngOnInit(): void {
+
+    this.Faculty_type=Number(localStorage.getItem('faculty_type'));
+    if(this.Faculty_type!=1 && this.Faculty_type!=3 )
+    {
+      console.log(true);
+     this._router.navigate(['menu']);
+    }
+
+
 
     this.stflag=false;
     this.Student_id = this._act.snapshot.params["Student_id"];

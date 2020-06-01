@@ -42,7 +42,7 @@ export class StudentHomeComponent implements OnInit {
     "Status",
     "Action"
   ];
-
+  Faculty_type:number;
 role:number=0;
   constructor(private _ser:StudentService,private _router:Router) {
     this.role=parseInt(localStorage.getItem('faculty_type'));
@@ -51,6 +51,16 @@ role:number=0;
   ngOnInit() {
     console.log(this.role);
     this.flag=true;
+
+    this.Faculty_type=Number(localStorage.getItem('faculty_type'));
+    if(this.Faculty_type!=1)
+    {
+      console.log(true);
+     this._router.navigate(['menu']);
+
+
+    }
+
 
 
     this._ser.getAllStudent().subscribe((data:any)=>{

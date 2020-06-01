@@ -43,6 +43,8 @@ import { AttendanceAddComponent } from './attendance/attendance-add/attendance-a
 import { AttendanceHomeComponent } from './attendance/attendance-home/attendance-home.component';
 import { AttendanceDetailsComponent } from './attendance/attendance-details/attendance-details.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { ViewQuestionPaperComponent } from './view-question-paper/view-question-paper.component';
+import { BatchResultComponent } from './batch-result/batch-result.component';
 const routes: Routes = [
   {path:'',component:LoginComponent},
   {path:"changepassword",component:ChangepasswordComponent},
@@ -84,7 +86,9 @@ const routes: Routes = [
      {path:'exam_home',component:ExamHomeComponent,canActivate:[AuthservicesService]},
      {path:'fees_home',component:FeesHomeComponent,canActivate:[AuthservicesService]},
      {path:'salary_faculty',component:FacultySalaryComponent,canActivate:[AuthservicesService]},
-     {path:'update_fees/:Student_id',component:FeesPayComponent,canActivate:[AuthservicesService]}
+     {path:'update_fees/:Student_id',component:FeesPayComponent,canActivate:[AuthservicesService]},
+     {path:'view_paper/:Exam_id',component:ViewQuestionPaperComponent,canActivate:[AuthservicesService]},
+     {path:'batch_result/:Exam_id',component:BatchResultComponent,canActivate:[AuthservicesService]}
 
    ]},
 ];

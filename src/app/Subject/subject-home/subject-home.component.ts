@@ -32,10 +32,20 @@ export class SubjectHomeComponent implements OnInit {
   @ViewChild(MatSort)
   sort: MatSort;
   pageEvent: PageEvent;
+  Faculty_type:number;
 flag:boolean=true;
   constructor(private matDialog:MatDialog,private _ac:ActivatedRoute,private _ser:SubjectService,private route:Router) { }
   displayedColumns: string[] = ['Action1','Subject_name','Action'];
   ngOnInit() {
+
+    this.Faculty_type=Number(localStorage.getItem('faculty_type'));
+    if(this.Faculty_type!=1)
+    {
+//    localStorage.setItem('faculty_type',"0");
+     this.route.navigate(['menu']);
+
+
+    }
     this.flag=true;
 
     this.Subject_dataSource.sort=this.sort;

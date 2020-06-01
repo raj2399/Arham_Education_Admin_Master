@@ -23,12 +23,21 @@ export class TagUpdateComponent implements OnInit {
   flag:boolean=false;
   i:number;
   subject_list:subject_class[]=[];
+  Faculty_type:number;
 
 
   constructor(private _sub:SubjectService,private _ser:TagService,private _act:ActivatedRoute,private _router:Router,public dialogRef: MatDialogRef<TagHomeComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
 
    }
   ngOnInit() {
+
+    this.Faculty_type=Number(localStorage.getItem('faculty_type'));
+    if(this.Faculty_type!=1)
+    {
+      console.log(true);
+     this._router.navigate(['menu']);
+    }
+
 
     this._sub.getAllSubject().subscribe((data:subject_class[])=>{
       this.subject_list=data;

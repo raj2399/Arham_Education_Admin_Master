@@ -49,13 +49,21 @@ salary_date:Date;
     "Salary",
     "Action"
   ];
-
+  Faculty_type:number;
 
   constructor(private _ser:FacultyService,private _router:Router,private fees_ser:FeesService) { }
 
   ngOnInit() {
 
     this.flag=true;
+
+    this.Faculty_type=Number(localStorage.getItem('faculty_type'));
+    if(this.Faculty_type!=1)
+    {
+      console.log(true);
+     this._router.navigate(['menu']);
+    }
+
 
 
     this._ser.getAllFaculty().subscribe((data:faculty_class[])=>{

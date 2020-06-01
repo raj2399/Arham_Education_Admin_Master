@@ -5,16 +5,19 @@
   <form class="example-form" (ngSubmit)="onclickAdd()" #f="ngForm" name="Add_Subject_form">
 
     <mat-form-field class="example-full-width">
-      <mat-select placeholder="Select Subject" required #Select_subject="ngModel" name="Select_subject"
-        [(ngModel)]="Subject_id" class="example-full-width">
-        <mat-option *ngFor="let item of subject_list" [value]="item.Subject_id">
+      <mat-select placeholder="Select Subject" required ngModel #subject_name1="ngModel" name="Select_subject1"
+        [(ngModel)]="sub_name" class="example-full-width">
+        <mat-option *ngFor="let item of subject_list" [value]="item">
           {{item.Name}}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="Select_subject.hasError('required')">
+      <mat-error *ngIf="subject_name1.hasError('required')">
         Subject Must be selected
       </mat-error>
     </mat-form-field>
+
+
+
 
 
     <br><br>

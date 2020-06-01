@@ -38,11 +38,19 @@ export class StudentUpdateComponent implements OnInit {
 
   Gender:string;
 
-
+  Faculty_type:number;
   constructor(private _act:ActivatedRoute,private _ser:AnnouncementService,private _router:Router,private stu_ser:StudentService) { }
 
 
   ngOnInit() {
+
+    this.Faculty_type=Number(localStorage.getItem('faculty_type'));
+    if(this.Faculty_type!=1)
+    {
+      console.log(true);
+     this._router.navigate(['menu']);
+    }
+
 
     this._ser.getAllBatch().subscribe((data:batch_class[]) => {
       this.Batch_list = data;
@@ -80,6 +88,23 @@ export class StudentUpdateComponent implements OnInit {
     );
 
   }
+
+
+  onClickChange()
+  {
+    if (this.Fees< 0 || this.Fees <10000) {
+      alert("Fees can not less than 10k");
+      this.Fees = 10000;
+    }
+    if(this.Fees>30000)
+    {
+      alert("Item can not more than 30k");
+      this.Fees=20000;
+    }
+
+
+  }
+
 
   keyPressText(event: any)
   {
