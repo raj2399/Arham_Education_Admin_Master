@@ -29,7 +29,7 @@
     "core-js": "^2.5.0",
     "html2canvas": "^1.0.0-rc.5",
     "html2pdf.js": "^0.9.2",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "moment": "^2.24.0",
     "ngx-countdown": "^8.0.3",
     "ngx-countdown-timer": "^0.1.9",
